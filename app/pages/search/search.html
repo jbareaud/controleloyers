@@ -1,0 +1,46 @@
+<div class="container-fluid search_arguments" >
+    <form name="searchForm" class="form-horizontal" novalidate>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <div class="form-group"
+                     ng-class="{ 'has-success': searchForm.nbPieces.$dirty && searchForm.nbPieces.$valid, 'has-error': searchForm.nbPieces.$dirty && searchForm.nbPieces.$invalid }" >
+                    <label for="nbPieces"
+                           class="col-md-6 control-label">Nombre de pièces</label>
+                    <div class="col-md-6">
+                        <select id="nbPieces" name="nbPieces"
+                                class="extend"
+                                ng-options="nb.libelle for nb in searchVm.optionsNbPieces track by nb.id"
+                                ng-model="searchVm.nbPieces"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <div class="form-group"
+                     ng-class="{ 'has-success': searchForm.epoques.$dirty && searchForm.epoques.$valid, 'has-error': searchForm.epoques.$dirty && searchForm.epoques.$invalid }">
+                    <label for="epoques"
+                           class="col-md-6 control-label">Epoques de construction</label>
+                    <div class="col-md-6">
+                        <select id="epoques" name="epoques"
+                                class="extend"
+                                ng-options="epoque.libelle for epoque in searchVm.optionesEpoques track by epoque.id"
+                                ng-model="searchVm.epoque"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-7 ">
+                 <button type="submit"
+                         class="btn btn-primary"
+                         ng-disabled="searchForm.$invalid"
+                         ng-click="searchVm.poursuivre()">Poursuivre</button>
+            </div>
+        </div>
+
+    </form>
+</div>

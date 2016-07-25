@@ -1,0 +1,43 @@
+<div class="container-fluid search_arguments" >
+
+    <script type="text/ng-template" id="angular-google-maps-geocoder-item.html">
+        <a>
+            <a ng-bind-html='match.model.formatted_address | uibTypeaheadHighlight:query  '></a>
+        </a>
+    </script>
+
+    <form name="adresseForm" class="form-horizontal" novalidate>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <div class="form-group"
+                     ng-class="{ 'has-success': adresseVm.out.place_id, 'has-error': adresseForm.adresseComplete.$dirty && !adresseVm.out.place_id }">
+                    <label for="adresseComplete" class="col-sm-2 control-label">Adresse</label>
+                    <div class="col-sm-9">
+                        <input name="adresseComplete"
+                               type="text"
+                               ng-model="adresseVm.out"
+                               placeholder="Veuillez rentrer votre adresse complète"
+                               uib-typeahead="address for address in adresseVm.reverseGeocode($viewValue)"
+                               typeahead-template-url="angular-google-maps-geocoder-item.html"
+                               typeahead-input-formatter="adresseVm.format(adresseVm.out)"
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"
+                               class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-7 ">
+                <button type="submit" class="btn btn-primary"
+                        ng-disabled=" ! adresseVm.out.place_id"
+                        ng-click="adresseVm.poursuivre()">Poursuivre</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
