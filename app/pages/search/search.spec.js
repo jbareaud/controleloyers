@@ -70,16 +70,6 @@ describe('controledesloyers.search module', function() {
             expect(view1Ctrl.optionesEpoques[3].libelle).toBe('> 1990');
         }));
 
-        /*
-        it('', inject(function($controller) {
-            var view1Ctrl = $controller('SearchCtrl');
-            view1Ctrl.nbPieces = {libelle:'4+', id:4};
-            view1Ctrl.epoque = {libelle:'> 1990', id:'sup1990'};
-            view1Ctrl.poursuivre();
-            expect(criteriaService.appartement.nbPieces).toBeDefined();
-        }));
-        */
-
     });
 
 });
